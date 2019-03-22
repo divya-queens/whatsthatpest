@@ -1,4 +1,4 @@
-from flaskblog import create_app
+from whatsThatPest import create_app
 
 app = create_app()
 
