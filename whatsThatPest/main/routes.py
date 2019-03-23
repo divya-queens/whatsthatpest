@@ -3,8 +3,11 @@ from whatsThatPest.models import Post
 
 main = Blueprint('main', __name__)
 
-
 @main.route("/")
+@main.route("/index")
+def index():
+    return render_template('index.html')
+
 @main.route("/home")
 def home():
     page = request.args.get('page', 1, type=int)
