@@ -1,4 +1,61 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>About Page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="title-single-box">
+                <h1 class="title-single">Upload bug picture<span class="color-b">.</span></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="login-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <form class="form-a contactForm" method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="card-box-d">
+                                    <div class="card-img-d wrapper">
+                                        <div class="file-upload">
+                                            {{ form.picture(class="form-control-file") }}
+                                            <i class="fa fa-arrow-up"></i>
+                                        </div>
+                                        {% if form.picture.errors %}
+                                            {% for error in form.picture.errors %}
+                                                <span class="text-danger">{{ error }}</span></br>
+                                            {% endfor %}
+                                        {% endif %}
+                                        {{ form.picture.label() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            {{ form.submit(class="btn btn-a") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
+
+
