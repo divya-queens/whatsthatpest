@@ -954,7 +954,7 @@ a:hover {
 /*------/ Intro Single /------*/
 
 .intro-single {
-  padding: 12rem 0 3rem;
+  padding: 8rem 0 0 0;
 }
 
 .intro-single .title-single-box {
@@ -2092,4 +2092,9 @@ footer .credits {
 .wrapper .file-upload:hover{
   background-position: 0 -100%;
   color:#2eca6a;
+}
+
+.login-form,
+.register-form {
+  padding-top: 1rem;
 }
