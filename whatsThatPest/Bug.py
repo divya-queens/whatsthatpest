@@ -25,7 +25,7 @@ moth = Bug(5, 'Moth larvae feed on leaves, buds, flowers, seed pods, the green o
 weevil = Bug(4, 'Weevils are certain beetles, namely the ones belonging to the superfamily Curculionoidea. They are usually small, less than 6 mm, and herbivorous. They damage leaves', ['permethrin', 'bifenthrin'])
 
 bug_info = {
-    'ladyBug': ladyBug,
+    'ladybug': ladyBug,
     'cricket': cricket,
     'fly': fly,
     'moth': moth,

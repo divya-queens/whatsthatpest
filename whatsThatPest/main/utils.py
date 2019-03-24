@@ -1,9 +1,8 @@
 import os
 import secrets
 from PIL import Image
-from flask import current_app, url_for
-# import json
-# from watson_developer_cloud import VisualRecognitionV3
+from flask import current_app, url_for, jsonify
+from watson_developer_cloud import VisualRecognitionV3
 
 
 def save_picture(bug_picture):
@@ -17,15 +16,17 @@ def save_picture(bug_picture):
 
     return picture_fn
 
+def bug_recognition(bug_image):
+    visual_recognition = VisualRecognitionV3(
+        '2018-03-19',
+        iam_apikey='KGSz0-fDoeCCyQQLQeWtfXro_RgjEa0PK44S5FPHNlU5')
 
-# visual_recognition = VisualRecognitionV3(
-#     '2018-03-19',
-#     iam_apikey='KGSz0-fDoeCCyQQLQeWtfXro_RgjEa0PK44S5FPHNlU5')
+    bug_path = os.path.join(current_app.root_path, 'static/bug_pics', bug_image)
 
-
-# with open('/home/divya/divya-queens/analytics-and-ai/dev-ai/comm493_whatsThatPest/whatsThatPest/static/bug_pics/lady.jpg', 'rb') as images_file:
-#     classes = visual_recognition.classify(
-#         images_file,
-#         threshold='0.6',
-# 	classifier_ids='PestRecognitionModel_39839098').get_result()
-# print(json.dumps(classes, indent=2))
+    with open(bug_path, 'rb') as images_file:
+        classes = visual_recognition.classify(
+            images_file,
+            threshold='0.6',
+            classifier_ids='PestRecognitionModel_39839098').get_result()
+    # parse json
+    return 'ladyBug'

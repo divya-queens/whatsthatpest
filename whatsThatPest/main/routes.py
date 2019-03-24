@@ -1,8 +1,10 @@
 from flask import render_template, request, Blueprint, redirect, url_for
 from flask_login import current_user, login_required
+from whatsThatPest import db
 from whatsThatPest.models import Post
 from whatsThatPest.main.forms import BugRecognitionForm
-from whatsThatPest.main.utils import save_picture
+from whatsThatPest.main.utils import save_picture, bug_recognition
+from whatsThatPest.models import Bug
 
 main = Blueprint('main', __name__)
 
@@ -26,10 +28,15 @@ def home():
     if form.validate_on_submit():
         if form.picture.data:
             bug_file = save_picture(form.picture.data)
+            bug_name = bug_recognition(bug_file)
+        
+            bug = Bug(name=bug_name, bug_image=bug_file, author=current_user)
+            db.session.add(bug)
+            db.session.commit()
+            return '<h1>Lady Bug</h1>'
 
-        #db.session.commit()
-
-    posts = Post.query.order_by(Post.date_posted.desc())
-    return render_template('home.html', form=form, posts=posts)
+    elif request.method == 'GET':
+        posts = Post.query.order_by(Post.date_posted.desc())
+        return render_template('home.html', form=form, posts=posts)
 
 
