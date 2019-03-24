@@ -1,10 +1,3 @@
-/*
-  Theme Name: EstateAgency
-  Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-
 /*======================================
 //--//-->   STYLES GENERALES
 ======================================*/
@@ -954,7 +947,7 @@ a:hover {
 /*------/ Intro Single /------*/
 
 .intro-single {
-  padding: 12rem 0 3rem;
+  padding: 8rem 0 0 0;
 }
 
 .intro-single .title-single-box {
@@ -2092,4 +2085,9 @@ footer .credits {
 .wrapper .file-upload:hover{
   background-position: 0 -100%;
   color:#2eca6a;
+}
+
+.login-form,
+.register-form {
+  padding-top: 1rem;
 }
