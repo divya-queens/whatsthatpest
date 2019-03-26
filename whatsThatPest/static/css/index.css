@@ -192,6 +192,12 @@ a:hover {
   margin: 2rem;
   text-align: center;
 }
+
+.intro-index .title img {
+  text-align: center;
+  width: 80px;
+  height: 80px;
+}
   
 .intro-index .title-single-box {
   border-left: 3px solid #2eca6a;

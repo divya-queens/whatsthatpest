@@ -21,7 +21,7 @@
                 </div>
               </div>
               <div class="col-md-12 col-lg-12">
-                <form class="form-a contactForm" method="POST" action="" enctype="multipart/form-data">
+                <form class="form-a contactForm" method="POST" action="/recognize" enctype="multipart/form-data">
                   {{ form.hidden_tag() }}
                   <fieldset>
                     <div class="row">
@@ -29,7 +29,7 @@
                           <div class="card-box-d">
                             <div class="card-img-d wrapper">
                               <div class="file-upload">
-                                  {{ form.picture(class="form-control-file") }}
+                                  {{ form.picture(class="form-control-file", id="file") }}
                                   <i class="fa fa-arrow-up"></i>
                               </div>
                               {% if form.picture.errors %}

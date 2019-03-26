@@ -3,6 +3,7 @@ import secrets
 from PIL import Image
 from flask import current_app, url_for, jsonify
 from watson_developer_cloud import VisualRecognitionV3
+import json
 
 
 def save_picture(bug_picture):
@@ -27,6 +28,9 @@ def bug_recognition(bug_image):
         classes = visual_recognition.classify(
             images_file,
             threshold='0.6',
-            classifier_ids='PestRecognitionModel_39839098').get_result()
-    # parse json
-    return 'ladyBug'
+            classifier_ids='PestRecognitionModel_39839098').result
+
+    try:
+        return classes['images'][0]['classifiers'][0]['classes'][0]['class']
+    except:
+        return 'unknown'
