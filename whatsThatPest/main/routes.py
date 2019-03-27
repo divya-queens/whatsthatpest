@@ -26,8 +26,9 @@ def about():
 def home():
     form = BugRecognitionForm()
     posts = Post.query.order_by(Post.date_posted.desc())
-
-    return render_template('home.html', form=form, posts=posts)
+    post_count = posts.count()
+    
+    return render_template('home.html', form=form, posts=posts, post_count=post_count)
 
 @main.route("/recognize", methods=['POST'])
 @login_required

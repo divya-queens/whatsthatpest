@@ -1,7 +1,7 @@
 import os
 import secrets
 from PIL import Image
-from flask import current_app, url_for, jsonify
+from flask import current_app
 from watson_developer_cloud import VisualRecognitionV3
 import json
 
